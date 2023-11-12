@@ -2,23 +2,23 @@ import java.util.Random;
 
 // backend
 public class pedraPapelTesoura {
-    private static final String[] computerChoices = {"Rock", "Paper", "Scissors"};
+    private static final String[] escolhasComputador = {"Pedra", "Papel", "Tesoura"};
 
-    public String getComputerChoice() {
-        return computerChoice;
+    public String getEscolhaComputador() {
+        return escolhaComputador;
     }
 
-    public int getComputerScore() {
-        return computerScore;
+    public int getPontuacaoComputador() {
+        return pontuacaoComputador;
     }
 
-    public int getPlayerScore() {
-        return playerScore;
+    public int getPontuacaoJogador() {
+        return pontuacaoJogador;
     }
 
-    private String computerChoice;
+    private String escolhaComputador;
 
-    private int computerScore, playerScore;
+    private int pontuacaoComputador, pontuacaoJogador;
 
     private Random random;
 
@@ -27,40 +27,40 @@ public class pedraPapelTesoura {
     }
 
 
-    public String playpedraPapelTesoura(String playerChoice){
-        computerChoice = computerChoices[random.nextInt(computerChoices.length)];
+    public String playpedraPapelTesoura(String escolhaJogador){
+        escolhaComputador = escolhasComputador[random.nextInt(escolhasComputador.length)];
 
         String result;
 
-        if(computerChoice.equals("Rock")){
-            if(playerChoice.equals("Paper")){
-                result = "Player Wins";
-                playerScore++;
-            }else if(playerChoice.equals("Scissors")){
-                result = "Computer Wins";
-                computerScore++;
+        if(escolhaComputador.equals("Pedra")){
+            if(escolhaJogador.equals("Papel")){
+                result = "Você venceu";
+                pontuacaoJogador++;
+            }else if(escolhaJogador.equals("Tesoura")){
+                result = "Computador Venceu";
+                pontuacaoComputador++;
             }else{
-                result = "Draw";
+                result = "Empate";
             }
-        }else if(computerChoice.equals("Paper")){
-            if(playerChoice.equals("Scissors")){
-                result = "Player Wins";
-                playerScore++;
-            }else if(playerChoice.equals("Rock")){
-                result = "Computer Wins";
-                computerScore++;
+        }else if(escolhaComputador.equals("Papel")){
+            if(escolhaJogador.equals("Tesoura")){
+                result = "Você venceu";
+                pontuacaoJogador++;
+            }else if(escolhaJogador.equals("Pedra")){
+                result = "Computador Venceu";
+                pontuacaoComputador++;
             }else{
-                result = "Draw";
+                result = "Empate";
             }
         }else{
-            if(playerChoice.equals("Rock")){
-                result = "Player Wins";
-                playerScore++;
-            }else if(playerChoice.equals("Paper")){
-                result = "Computer Wins";
-                computerScore++;
+            if(escolhaJogador.equals("Pedra")){
+                result = "Você venceu";
+                pontuacaoJogador++;
+            }else if(escolhaJogador.equals("Papel")){
+                result = "Computador Venceu";
+                pontuacaoComputador++;
             }else{
-                result = "Draw";
+                result = "Empate";
             }
         }
 

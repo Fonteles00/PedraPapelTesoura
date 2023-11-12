@@ -5,16 +5,16 @@ import java.awt.event.ActionListener;
 
 // frontend
 public class pedraPapelTesouraGUI extends JFrame implements ActionListener{
-    JButton rockButton, paperButton, scissorButton;
+    JButton botaoPedra, botaoPapel, botaoTesoura;
 
-    JLabel computerChoice;
+    JLabel escolhaComputador;
 
-    JLabel computerScoreLabel, playerScoreLabel;
+    JLabel pontuacaoComputadorLabel, pontuacaoJogadorLabel;
 
     pedraPapelTesoura pedraPapelTesoura;
 
     public pedraPapelTesouraGUI(){
-        super("Rock Paper Scissor");
+        super("Pedra Papel Tesoura");
 
         setSize(450, 574);
 
@@ -31,69 +31,67 @@ public class pedraPapelTesouraGUI extends JFrame implements ActionListener{
     }
 
     private void addGuiComponents(){
-        computerScoreLabel = new JLabel("Computer: 0");
+        pontuacaoComputadorLabel = new JLabel("Computador: 0");
 
-        computerScoreLabel.setBounds(0, 43, 450, 30);
+        pontuacaoComputadorLabel.setBounds(0, 43, 450, 30);
 
-        computerScoreLabel.setFont(new Font("Dialog", Font.BOLD, 26));
+        pontuacaoComputadorLabel.setFont(new Font("Dialog", Font.BOLD, 26));
 
-        computerScoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        pontuacaoComputadorLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        add(computerScoreLabel);
+        add(pontuacaoComputadorLabel);
 
-        computerChoice = new JLabel("?");
-        computerChoice.setBounds(175, 118, 98, 81);
-        computerChoice.setFont(new Font("Dialog", Font.PLAIN, 18));
-        computerChoice.setHorizontalAlignment(SwingConstants.CENTER);
+        escolhaComputador = new JLabel("?");
+        escolhaComputador.setBounds(175, 118, 98, 81);
+        escolhaComputador.setFont(new Font("Dialog", Font.PLAIN, 18));
+        escolhaComputador.setHorizontalAlignment(SwingConstants.CENTER);
 
-        computerChoice.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        add(computerChoice);
+        escolhaComputador.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        add(escolhaComputador);
 
-        playerScoreLabel = new JLabel("Player: 0");
-        playerScoreLabel.setBounds(0, 317, 450, 30);
-        playerScoreLabel.setFont(new Font("Dialog", Font.BOLD, 26));
-        playerScoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        add(playerScoreLabel);
+        pontuacaoJogadorLabel = new JLabel("Jogador: 0");
+        pontuacaoJogadorLabel.setBounds(0, 317, 450, 30);
+        pontuacaoJogadorLabel.setFont(new Font("Dialog", Font.BOLD, 26));
+        pontuacaoJogadorLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        add(pontuacaoJogadorLabel);
 
 
-        rockButton = new JButton("Rock");
-        rockButton.setBounds(40, 387, 105, 81);
-        rockButton.setFont(new Font("Dialog", Font.PLAIN, 18));
-        rockButton.addActionListener(this);
-        add(rockButton);
+        botaoPedra = new JButton("Pedra");
+        botaoPedra.setBounds(40, 387, 105, 81);
+        botaoPedra.setFont(new Font("Dialog", Font.PLAIN, 18));
+        botaoPedra.addActionListener(this);
+        add(botaoPedra);
 
-        paperButton = new JButton("Paper");
-        paperButton.setBounds(165, 387, 105, 81);
-        paperButton.setFont(new Font("Dialog", Font.PLAIN, 18));
-        paperButton.addActionListener(this);
-        add(paperButton);
+        botaoPapel = new JButton("Papel");
+        botaoPapel.setBounds(165, 387, 105, 81);
+        botaoPapel.setFont(new Font("Dialog", Font.PLAIN, 18));
+        botaoPapel.addActionListener(this);
+        add(botaoPapel);
 
-        scissorButton = new JButton("Scissors");
-        scissorButton.setBounds(290, 387, 105, 81);
-        scissorButton.setFont(new Font("Dialog", Font.PLAIN, 18));
-        scissorButton.addActionListener(this);
-        add(scissorButton);
+        botaoTesoura = new JButton("Tesoura");
+        botaoTesoura.setBounds(290, 387, 105, 81);
+        botaoTesoura.setFont(new Font("Dialog", Font.PLAIN, 18));
+        botaoTesoura.addActionListener(this);
+        add(botaoTesoura);
     }
 
     // displays a message dialog which will show the winner and a try again button to play again
     private void showDialog(String message){
-        JDialog resultDialog = new JDialog(this, "Result", true);
+        JDialog resultDialog = new JDialog(this, "Resultado", true);
         resultDialog.setSize(227, 124);
         resultDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         resultDialog.setResizable(false);
 
-        // message label
         JLabel resultLabel = new JLabel(message);
         resultLabel.setFont(new Font("Dialog", Font.BOLD, 18));
         resultLabel.setHorizontalAlignment(SwingConstants.CENTER);
         resultDialog.add(resultLabel, BorderLayout.CENTER);
 
-        // try again button
-        JButton tryAgainButton = new JButton("Try Again?");
+        JButton tryAgainButton = new JButton("De novo?");
         tryAgainButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                computerChoice.setText("?");
+                escolhaComputador.setText("?");
 
                 resultDialog.dispose();
             }
@@ -110,10 +108,10 @@ public class pedraPapelTesouraGUI extends JFrame implements ActionListener{
 
         String result = pedraPapelTesoura.playpedraPapelTesoura(playerChoice);
 
-        computerChoice.setText(pedraPapelTesoura.getComputerChoice());
+        escolhaComputador.setText(pedraPapelTesoura.getEscolhaComputador());
 
-        computerScoreLabel.setText("Computer: " + pedraPapelTesoura.getComputerScore());
-        playerScoreLabel.setText("Player: " + pedraPapelTesoura.getPlayerScore());
+        pontuacaoComputadorLabel.setText("Computador: " + pedraPapelTesoura.getPontuacaoComputador());
+        pontuacaoJogadorLabel.setText("Jogador: " + pedraPapelTesoura.getPontuacaoJogador());
 
         showDialog(result);
     }
